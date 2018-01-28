@@ -19,9 +19,16 @@
     "index.js"
   ],
   "keywords": [
-    "cli-app",
-    "cli",
-    ""
+    "aws",
+    "lambda",
+    "dynamo",
+    "dynamodb",
+    "docker",
+    "test",
+    "testing",
+    "emulate",
+    "simulate",
+    "serverless"
   ],
   "dependencies": {
     "aws-sdk": "^2.188.0"
