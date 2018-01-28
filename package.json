@@ -1,6 +1,6 @@
 {
   "name": "lambda-emulator",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Fully emulate AWS Lambda + DynamoDB application and run tests",
   "license": "MIT",
   "repository": "Hoishin/lambda-emulator",
