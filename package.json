@@ -1,9 +1,9 @@
 {
-  "name": "lambda-emulator",
-  "version": "1.0.1",
-  "description": "Fully emulate AWS Lambda + DynamoDB application and run tests",
+  "name": "lambda-env",
+  "version": "1.0.0",
+  "description": "Easy Lambda + DynamoDB development and testing with Serverless Framework. Automatically configure SDK config according to environment variables.",
   "license": "MIT",
-  "repository": "Hoishin/lambda-emulator",
+  "repository": "Hoishin/lambda-env",
   "author": {
     "name": "Hoishin",
     "email": "hoishinxii@gmail.com",

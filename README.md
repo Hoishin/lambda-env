@@ -1,6 +1,6 @@
-# lambda-emulator [![Build Status](https://travis-ci.org/Hoishin/lambda-emulator.svg?branch=master)](https://travis-ci.org/Hoishin/lambda-emulator) [![codecov](https://codecov.io/gh/Hoishin/lambda-emulator/badge.svg?branch=master)](https://codecov.io/gh/Hoishin/lambda-emulator?branch=master)
+# lambda-env [![Build Status](https://travis-ci.org/Hoishin/lambda-env.svg?branch=master)](https://travis-ci.org/Hoishin/lambda-env) [![codecov](https://codecov.io/gh/Hoishin/lambda-env/badge.svg?branch=master)](https://codecov.io/gh/Hoishin/lambda-env?branch=master)
 
-> Emulate AWS Lambda + DynamoDB application and run tests
+> Easy Lambda + DynamoDB development and testing with Serverless Framework. Automatically configure SDK config according to environment variables.
 
 ## Prerequisites
 
@@ -10,7 +10,7 @@
 ## Install
 
 ```sh
-npm install --save lambda-emulator
+npm install --save lambda-env
 ```
 
 ## Setting up
@@ -23,14 +23,14 @@ node --version
 nvm install 6.10.3
 ```
 
-Install Serverless Framework and its plugins
+Install Serverless Framework (globally) and its plugins (locally)
 
 ```sh
 npm install --global serverless
 npm install --save-dev serverless-dynamodb-local serverless-offline serverless-plugin-simulate
 ```
 
-Download the Docker image that will be used to emulate Lambda
+Download the Docker image that will be used to simulate Lambda
 
 ```sh
 docker pull lambci/lambda:nodejs6.10
@@ -60,22 +60,35 @@ sls dynamodb start -p 8000 --seed=development
 
 ## Usage
 
-### SDK
+### AWS SDK
 
 ```js
-// Instead of require('aws-sdk') import 'lambda-emulator'
-// Even though the name is emulator, this import is production-ready
-// since it will just import aws-sdk if it is production
-const { Lambda, DynamoDB } = require('lambda-emulator');
+const AWS = require('aws-sdk');
+// Require lambda-env for side-effect
+// This will configure AWS object according to environment
+require('lambda-env');
 
-const lambda = new Lambda();
+const lambda = new AWS.Lambda();
 lambda.invoke(someParams);
 
-const dynamodb = new DynamoDB.DocumentClient();
+const dynamodb = new AWS.DynamoDB.DocumentClient();
 dynamodb.get(someParams);
 ```
 
-### CLI
+or you can require `AWS` object from this package
+
+```js
+// This AWS is exactly same object as original require('aws-sdk')
+const AWS = require('lambda-env');
+
+const lambda = new AWS.Lambda();
+lambda.invoke(someParams);
+
+const dynamodb = new AWS.DynamoDB.DocumentClient();
+dynamodb.get(someParams);
+```
+
+### Invoke Functions from CLI
 
 Use Serverless commands
 
@@ -98,18 +111,6 @@ invoke local .................. Invoke function locally
 ### API Gateway Entrypoint
 
 [http://localhost:5000](http://localhost:5000)
-
-## API
-
-### Lambda
-
-- Returns `AWS.Lambda`
-- Endpoint and other configs are set according to environment
-
-### DynamoDB
-
-- Returns `AWS.DynamoDB`
-- Endpoint and other configs are set according to environment
 
 ## TODO
 

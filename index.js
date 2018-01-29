@@ -36,5 +36,4 @@ if (isSimulate) {
 	};
 }
 
-exports.Lambda = aws.Lambda;
-exports.DynamoDB = aws.DynamoDB;
+module.exports = aws;
