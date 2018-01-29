@@ -1,6 +1,6 @@
 {
   "name": "serverless-lambda",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Easy Lambda + DynamoDB development and testing with Serverless Framework. Automatically configure SDK config according to environment variables.",
   "license": "MIT",
   "repository": "Hoishin/serverless-lambda",
