@@ -1,4 +1,4 @@
-# lambda-env [![Build Status](https://travis-ci.org/Hoishin/lambda-env.svg?branch=master)](https://travis-ci.org/Hoishin/lambda-env) [![codecov](https://codecov.io/gh/Hoishin/lambda-env/badge.svg?branch=master)](https://codecov.io/gh/Hoishin/lambda-env?branch=master)
+# serverless-lambda [![Build Status](https://travis-ci.org/Hoishin/serverless-lambda.svg?branch=master)](https://travis-ci.org/Hoishin/serverless-lambda) [![codecov](https://codecov.io/gh/Hoishin/serverless-lambda/badge.svg?branch=master)](https://codecov.io/gh/Hoishin/serverless-lambda?branch=master)
 
 > Easy Lambda + DynamoDB development and testing with Serverless Framework. Automatically configure SDK config according to environment variables.
 
@@ -10,7 +10,7 @@
 ## Install
 
 ```sh
-npm install --save lambda-env
+npm install --save serverless-lambda
 ```
 
 ## Setting up
@@ -64,9 +64,9 @@ sls dynamodb start -p 8000 --seed=development
 
 ```js
 const AWS = require('aws-sdk');
-// Require lambda-env for side-effect
+// Require serverless-lambda for side-effect
 // This will configure AWS object according to environment
-require('lambda-env');
+require('serverless-lambda');
 
 const lambda = new AWS.Lambda();
 lambda.invoke(someParams);
@@ -79,7 +79,7 @@ or you can require `AWS` object from this package
 
 ```js
 // This AWS is exactly same object as original require('aws-sdk')
-const AWS = require('lambda-env');
+const AWS = require('serverless-lambda');
 
 const lambda = new AWS.Lambda();
 lambda.invoke(someParams);
